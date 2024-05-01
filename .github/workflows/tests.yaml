@@ -36,7 +36,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          /path/to/python -m pytest --cov=test_utils
+          /opt/hostedtoolcache/Python/3.8.18/x64/bin/python -m pytest --cov=test_utils
           codecov
 
       - name: Post coverage report comment
