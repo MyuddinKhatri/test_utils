@@ -9,6 +9,7 @@ from validate_customizations import scrub
 
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
+# comment to test coverage comment
 def get_customized_doctypes(app):
 	customized_doctypes = {}
 
