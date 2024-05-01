@@ -23,8 +23,8 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip3 install poetry
+          poetry add pytest-cov codecov
           poetry install
-          poetry install pytest-cov codecov
 
       - name: Run tests with coverage
         run: |
