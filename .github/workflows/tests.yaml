@@ -25,7 +25,6 @@ jobs:
           pip install poetry
           poetry add pytest pytest-cov codecov
           poetry install
-          pytest --version
 
       - name: Print Python and pip information
         run: |
