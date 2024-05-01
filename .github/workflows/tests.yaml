@@ -25,6 +25,7 @@ jobs:
           pip install poetry
           poetry add pytest pytest-cov codecov
           poetry install
+          pytest --version
 
       - name: Run tests with coverage
         run: |
