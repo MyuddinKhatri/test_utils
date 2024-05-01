@@ -21,8 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          pip3 install poetry
+          python -m pip install --upgrade pip
+          pip install poetry
           poetry add pytest pytest-cov codecov
           poetry install
 
