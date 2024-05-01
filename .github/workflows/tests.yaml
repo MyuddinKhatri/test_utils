@@ -27,9 +27,17 @@ jobs:
           poetry install
           pytest --version
 
+      - name: Print Python and pip information
+        run: |
+          which python
+          python --version
+          which pip
+          pip --version
+          pip list
+
       - name: Run tests with coverage
         run: |
-          pytest --cov=test_utils
+          /path/to/python -m pytest --cov=test_utils
           codecov
 
       - name: Post coverage report comment
