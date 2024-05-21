@@ -1,5 +1,5 @@
 - id: test_utils
-  name: validate
+  name: validate_copyright
   description: "Validate Copyright"
   entry: python3 pre-commit/validate_copyright.py {app_name}
-  language: python
+  language: python3
