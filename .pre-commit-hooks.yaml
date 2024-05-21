@@ -2,4 +2,4 @@
   name: validate
   description: "Validate Copyright"
   entry: python3 pre-commit/validate_copyright.py {app_name}
-  language: system
+  language: python
