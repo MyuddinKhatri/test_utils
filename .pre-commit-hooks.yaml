@@ -33,3 +33,10 @@
   entry: validate_customizations
   language: python
   require_serial: true
+
+- id: add_translations
+  name: add_translations
+  description: "Add Translations"
+  entry: add_translations
+  language: python
+  require_serial: true
