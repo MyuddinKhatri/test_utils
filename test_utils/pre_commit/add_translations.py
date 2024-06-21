@@ -1,21 +1,27 @@
-import argparse
+import os
 import logging
+import argparse
+import pathlib
 from typing import Sequence
-try:
-	from frappe.translate import get_untranslated
-except Exception as e:
-	raise (e)
-
 
 logging.basicConfig(filename='hook.log', level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
 
-def add_translations(lang, app):
+def setup_frappe():
+	bench_path = pathlib.Path().resolve().parent.parent
+	os.environ['FRAPPE_SITE_NAME'] = 'localhost.demand'
+	os.environ['FRAPPE_BENCH_PATH'] = bench_path
+	import frappe
+	frappe.init(site=os.environ['FRAPPE_SITE_NAME'])
+	frappe.connect()
+	return frappe
+
+def add_translations(frappe, lang, app):
 	logger.info(f"In the fn")
+	from frappe.translate import get_untranslated
 	get_untranslated(lang, f"../apps/{app}/random.txt", app)
 
 def main(argv: Sequence[str] = None):
-	print("=================HEY")
 	logger.info(f"In the main")
 	parser = argparse.ArgumentParser()
 	parser.add_argument('filenames', nargs='*')
@@ -23,7 +29,14 @@ def main(argv: Sequence[str] = None):
 	parser.add_argument('--lang', action='append', help='Language for translation')
 	args = parser.parse_args(argv)
 
-	app = "beam"
-	lang = "en"
+	app = "beam"  # Default app
+	lang = "en"   # Default language
 	if app:
-		add_translations(lang, app)
+		frappe = setup_frappe()
+		try:
+			add_translations(frappe, lang, app)
+		finally:
+			frappe.destroy()
+
+if __name__ == '__main__':
+	main()
