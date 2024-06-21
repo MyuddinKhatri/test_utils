@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def setup_frappe():
 	bench_path = pathlib.Path().resolve().parent.parent
 	os.environ['FRAPPE_SITE_NAME'] = 'localhost.demand'
-	os.environ['FRAPPE_BENCH_PATH'] = bench_path
+	os.environ['FRAPPE_BENCH_PATH'] = str(bench_path)
 	import frappe
 	frappe.init(site=os.environ['FRAPPE_SITE_NAME'])
 	frappe.connect()
