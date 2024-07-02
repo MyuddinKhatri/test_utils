@@ -42,4 +42,4 @@ def main(argv: Sequence[str] = None):
 	lang = "es"
 	app = "cloud_storage"
 	install_frappe()
-	# add_translations(lang, app)
+	add_translations(lang, app)
