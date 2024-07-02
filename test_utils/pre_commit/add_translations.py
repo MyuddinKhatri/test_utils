@@ -21,6 +21,14 @@ def add_translations(lang, app):
 	update_translations(lang=lang, untranslated_file=untranslated_file, translated_file=translated_file, app=app)
 
 
+def install_frappe():
+	try:
+		import frappe
+	except ImportError:
+		logger.info("Installing frappe module")
+		subprocess.run(['pip', 'install', 'frappe-bench'], check=True)
+
+
 def main(argv: Sequence[str] = None):
 	parser = argparse.ArgumentParser()
 	parser.add_argument('filenames', nargs='*')
@@ -29,7 +37,8 @@ def main(argv: Sequence[str] = None):
 	args = parser.parse_args(argv)
 
 	os.chdir('../..')
-	subprocess.run(['source', 'env/bin/activate'], shell=True)
+	subprocess.run(['source', 'env/bin/activate'], capture_output=True, text=True)
 	lang = "es"
 	app = "cloud_storage"
-	add_translations(lang, app)
+	install_frappe()
+	# add_translations(lang, app)
