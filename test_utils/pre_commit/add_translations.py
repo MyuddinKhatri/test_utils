@@ -38,7 +38,7 @@ def main(argv: Sequence[str] = None):
 
 	os.chdir('../..')
 	print("=============================", pathlib.Path().resolve())
-	subprocess.run(['source', 'env/bin/activate'], capture_output=True, text=True)
+	# subprocess.run(['source', 'env/bin/activate'], capture_output=True, text=True)
 	lang = "es"
 	app = "cloud_storage"
 	install_frappe()
