@@ -2,6 +2,7 @@ import os
 import logging
 import argparse
 import pathlib
+import subprocess
 from typing import Sequence
 
 # try:
@@ -26,7 +27,9 @@ def main(argv: Sequence[str] = None):
 	parser.add_argument('--app', action='append', help='App to get untranslated string and translate them')
 	args = parser.parse_args(argv)
 
-	print("===============================================", pathlib.Path().resolve())
+	os.chdir('../..')
+	subprocess.run(['source', 'env/bin/activate'], shell=True)
+
 	lang = args.lang[0]
 	app = args.app[0]
 	# add_translations(lang, app)
