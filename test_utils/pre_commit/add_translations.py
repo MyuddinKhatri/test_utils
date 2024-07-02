@@ -41,5 +41,5 @@ def main(argv: Sequence[str] = None):
 	app = "cloud_storage"
 	install_frappe()
 	print("=============================", pathlib.Path().resolve())
-	subprocess.run(['source', 'env/bin/activate'], capture_output=True, text=True)
+	subprocess.run(['source', 'env/bin/activate'], executable='/bin/bash')
 	add_translations(lang, app)
