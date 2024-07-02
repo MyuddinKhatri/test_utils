@@ -37,9 +37,9 @@ def main(argv: Sequence[str] = None):
 	args = parser.parse_args(argv)
 
 	os.chdir('../..')
-	print("=============================", pathlib.Path().resolve())
-	# subprocess.run(['source', 'env/bin/activate'], capture_output=True, text=True)
 	lang = "es"
 	app = "cloud_storage"
 	install_frappe()
+	print("=============================", pathlib.Path().resolve())
+	subprocess.run(['source', 'env/bin/activate'], capture_output=True, text=True)
 	add_translations(lang, app)
