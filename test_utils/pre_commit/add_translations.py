@@ -18,7 +18,7 @@ def activate_frappe_env():
 		if os.path.exists(env_activate_script):
 			# Activate the virtual environment
 			command = f"source env/bin/activate"
-			subprocess.check_call(command, shell=True)
+			subprocess.run(command, shell=True, executable='/bin/bash')
 		else:
 			print("Virtual environment activation script not found.")
 			sys.exit(1)
