@@ -1,11 +1,12 @@
 import argparse
 import os
+import pathlib
 import sys
 import subprocess
 from typing import Sequence
 
 def activate_frappe_env():
-	frappe_bench_path = "/path/to/frappe-bench"
+	frappe_bench_path = pathlib.Path().resolve().parent.parent
 	env_activate_script = os.path.join(frappe_bench_path, "env", "bin", "activate")
 
 	# Check if frappe-bench exists and has the required directories
